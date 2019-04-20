@@ -94,6 +94,7 @@ stories
         i18nAddNewButtonText={text('Add New Text', 'Add New')}
         children={
           <CiCdListEmptyState
+            onAddNew={action('onAddNew')}
             i18nAddNewButtonText={text('Add New Text', 'Add New')}
             i18nTitle={text('Empty State Title', 'No Environments Available')}
           />

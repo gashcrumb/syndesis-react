@@ -27,6 +27,7 @@ const editorRoutes = {
 
 export default include('/integrations', {
   list: '',
+  manageCicd: include('manageCicd', { root: '' }),
   create: include('create', {
     start: include('start', {
       selectConnection: '',

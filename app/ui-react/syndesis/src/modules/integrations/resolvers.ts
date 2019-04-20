@@ -6,6 +6,9 @@ import routes from './routes';
 // TODO: unit test every single one of these resolvers 😫
 export default {
   list: makeResolverNoParams(routes.list),
+  manageCicd: {
+    root: makeResolverNoParams(routes.manageCicd.root),
+  },
   create: {
     root: makeResolverNoParams(routes.create.root),
     start: {

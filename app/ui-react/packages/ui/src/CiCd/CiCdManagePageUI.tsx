@@ -3,20 +3,22 @@ import {
   ConfirmationButtonStyle,
   ConfirmationDialog,
   ConfirmationIconType,
+  IListViewToolbarProps,
   SimplePageHeader,
 } from '../Shared';
 import { CiCdEditDialog } from './CiCdEditDialog';
 import { CiCdList } from './CiCdList';
 import { CiCdListEmptyState } from './CiCdListEmptyState';
 import { CiCdListItem } from './CiCdListItem';
-import { CiCdListView, ICiCdListViewProps } from './CiCdListView';
+import { CiCdListView } from './CiCdListView';
 import { ICiCdListPageItem } from './CiCdUIModels';
 
-export interface ICiCdListPageProps extends ICiCdListViewProps {
+export interface ICiCdManagePageUIProps extends IListViewToolbarProps {
   i18nAddTagDialogTitle: string;
   i18nAddTagDialogDescription: string;
   i18nEditTagDialogTitle: string;
   i18nEditTagDialogDescription: string;
+  i18nAddNewButtonText: string;
   i18nTagInputLabel: string;
   i18nSaveButtonText: string;
   i18nCancelButtonText: string;
@@ -36,18 +38,18 @@ export interface ICiCdListPageProps extends ICiCdListViewProps {
   onRemoveItem: (name: string) => void;
 }
 
-export interface ICiCdListPageState {
+export interface ICiCdManagePageUIState {
   showAddDialog: boolean;
   showEditDialog: boolean;
   showRemoveDialog: boolean;
   currentItemName?: string;
 }
 
-export class CiCdManagePage extends React.Component<
-  ICiCdListPageProps,
-  ICiCdListPageState
+export class CiCdManagePageUI extends React.Component<
+  ICiCdManagePageUIProps,
+  ICiCdManagePageUIState
 > {
-  public constructor(props: ICiCdListPageProps) {
+  public constructor(props: ICiCdManagePageUIProps) {
     super(props);
     this.state = {
       showAddDialog: false,
@@ -100,7 +102,7 @@ export class CiCdManagePage extends React.Component<
   }
   public render() {
     return (
-      <div className="container-pf-nav-pf-vertical">
+      <>
         <SimplePageHeader
           i18nTitle={this.props.i18nPageTitle}
           i18nDescription={this.props.i18nPageDescription}
@@ -185,6 +187,7 @@ export class CiCdManagePage extends React.Component<
               )}
               {this.props.listItems.length === 0 && (
                 <CiCdListEmptyState
+                  onAddNew={this.openAddDialog}
                   i18nTitle={this.props.i18nEmptyStateTitle}
                   i18nAddNewButtonText={this.props.i18nAddNewButtonText}
                 />
@@ -192,7 +195,7 @@ export class CiCdManagePage extends React.Component<
             </>
           }
         />
-      </div>
+      </>
     );
   }
 }

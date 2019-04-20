@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { CiCdManagePage, ICiCdListPageItem } from '../../src';
+import { CiCdManagePageUI, ICiCdListPageItem } from '../../src';
 
-const stories = storiesOf('CiCd/CiCdManagePage', module);
+const stories = storiesOf('CiCd/CiCdManagePageUI', module);
 stories.addDecorator(withKnobs);
 
 stories
@@ -59,7 +59,7 @@ class CiCdManagePageStory extends React.Component<ICiCdManagePageStoryProps> {
   }
   public render() {
     return (
-      <CiCdManagePage
+      <CiCdManagePageUI
         activeFilters={[]}
         currentFilterType={{
           filterType: 'text',
@@ -82,7 +82,6 @@ class CiCdManagePageStory extends React.Component<ICiCdManagePageStoryProps> {
         onClearFilters={action('onClearFilters')}
         onToggleCurrentSortDirection={action('onToggleCurrentSortDirection')}
         onUpdateCurrentSortType={action('onUpdateCurrentSortType')}
-        onAddNew={action('onAddNew')}
         onEditItem={action('onEditItem')}
         onAddItem={action('onAddItem')}
         onRemoveItem={action('onRemoveItem')}
